@@ -2864,8 +2864,6 @@ G2L_MODULES[G2L["90"]] = {
 Closure = function()
     local script = G2L["90"];
 return {
-	--Dex = "require(4786706026):dex('%username%')",
-	--happyhub = "require(78790302691160):Hload('%username%')"
     --[[
 	Dex = "require(4786706026):dex('%username%')",
 	Minecraft = "require(5820669639)('%username%')",
