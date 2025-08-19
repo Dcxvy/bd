@@ -2865,6 +2865,7 @@ G2L_MODULES[G2L["90"]] = {
 Closure = function()
     local script = G2L["90"];
 return {
+	--[[
 	Dex = "require(4786706026):dex('%username%')",
 	Minecraft = "require(5820669639)('%username%')",
 	CrashUI = "require(6053693667).Crashexe('%username%')",
@@ -2879,6 +2880,7 @@ return {
 	PoliceAI = "require(7163976217).VK('%username%')",
 	TankAI = "require(7203746402).tonk('%username%')",
 	JuggernautAI = "require(7486656912).Juggernaut('%username%')"
+	--]]
 }
 end;
 };
