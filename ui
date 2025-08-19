@@ -503,7 +503,7 @@ G2L["33"]["ImageColor3"] = Color3.fromRGB(14, 14, 14);
 G2L["33"]["SliceScale"] = 0.05000000074505806;
 G2L["33"]["AnchorPoint"] = Vector2.new(1, 0.5);
 G2L["33"]["Image"] = [[rbxassetid://3570695787]];
-G2L["33"]["Size"] = UDim2.new(0, 113, 1, -79);
+G2L["33"]["Size"] = UDim2.new(0.075, 113, 1, -79);
 G2L["33"]["BorderColor3"] = Color3.fromRGB(21, 21, 21);
 G2L["33"]["Name"] = [[Scripthub]];
 G2L["33"]["Position"] = UDim2.new(1, 0, 0.5, 0);
@@ -530,6 +530,7 @@ G2L["35"]["HorizontalAlignment"] = Enum.HorizontalAlignment.Center;
 G2L["35"]["Padding"] = UDim.new(0, 5);
 G2L["35"]["SortOrder"] = Enum.SortOrder.LayoutOrder;
 
+--DUMMY SCRIPT
 -- StarterGui.backdoor.exe v8.Main.BodyClipping.Executor.InnerBody.Scripthub.Scripts.dummy
 G2L["36"] = Instance.new("ImageLabel", G2L["34"]);
 G2L["36"]["ZIndex"] = -1;
@@ -605,7 +606,7 @@ G2L["3b"]["ImageColor3"] = Color3.fromRGB(14, 14, 14);
 G2L["3b"]["SliceScale"] = 0.05000000074505806;
 G2L["3b"]["Selectable"] = true;
 G2L["3b"]["Image"] = [[rbxassetid://3570695787]];
-G2L["3b"]["Size"] = UDim2.new(0, 104, 0, 23);
+G2L["3b"]["Size"] = UDim2.new(0, 154, 0, 23);
 G2L["3b"]["Active"] = true;
 G2L["3b"]["BorderColor3"] = Color3.fromRGB(22, 22, 22);
 G2L["3b"]["Name"] = [[TextBox]];
@@ -2832,6 +2833,12 @@ local function addScript(name, code, isLocal)
     btn.Name = name
     btn.Template.Text = name
     btn.Parent = scriptsContainer
+
+	btn.Size = UDim2.new(1, 0, 0, 40)  -- full width of container, 40px tall
+	btn.Template.TextWrapped = true    -- wrap long text
+	btn.Template.TextScaled = false    -- keep text readable size
+	btn.Template.TextXAlignment = Enum.TextXAlignment.Left  -- align text to left
+	btn.Template.TextTruncate = Enum.TextTruncate.None      -- don't cut off
 
     if not isLocal then
         -- verified script (from hub)
@@ -7506,7 +7513,7 @@ local script = G2L["83"];
 	local runService = game:GetService("RunService");
 	
 	-- consts
-	local minSize = Vector2.new(503, 248);
+	local minSize = Vector2.new(606, 248);
 	local maxSize = Vector2.new(720, 432);
 	
 	-- vars
