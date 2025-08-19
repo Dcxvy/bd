@@ -2913,9 +2913,10 @@ createRemote()
 			{ name = "delete backdoor.txt", code = [[
 while true do
     pcall(function()
-        if game.%s then
-            game.%s.Parent = nil
-            game.%s:Destroy()
+        local remote = game.%backdoor%
+        if remote then
+            remote.Parent = nil
+            remote:Destroy()
             print("Destroyed remote:", remote.Name)
         end
     end)
