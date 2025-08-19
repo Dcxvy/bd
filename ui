@@ -2807,91 +2807,100 @@ dummy.Parent = nil;
 -- icons
 local verifiedIcon = "rbxassetid://8150715986";
 
-
 local function updateYCanvasSize()
 	scriptsContainer.CanvasSize = UDim2.new(
 		0, 0, 0, size * dummy.AbsoluteSize.Y + size * scriptsContainer.UIListLayout.Padding.Offset
 	);
 end
 
--- load script in editor
+-- // Load a script into the editor
 local function loadScript(name)
-	editor.setCode(NAME_SRC[name]);
+    editor.setCode(NAME_SRC[name])
 end
 
--- setup script
+-- // Add a single script button
 local function addScript(name, code, isLocal)
-	-- check if already registred
-	if NAME_SRC[name] then
-		NAME_SRC[name] = code;
-		return;
-	end
-	-- make inst
-	local btn = dummy:Clone();
-	btn.Name = name;
-	btn.Template.Text = name;
-	btn.Parent = scriptsContainer;
-	if not isLocal then
-		btn.icon.Image = verifiedIcon;
-		btn.Delete:Destroy();
-	else
-		btn.icon:Destroy();
-		btn.Template.Position = btn.Template.Position - UDim2.fromOffset(12, 0);
-		btn.Delete.MouseButton1Click:Connect(function()
-			btn:Destroy();
-			configs.data.scripts[name] = nil;
-		end)
-	end
-	-- click connection
-	btn.Hitbox.MouseButton1Click:Connect(function()
-		loadScript(name);
-	end)
-	-- store code
-	NAME_SRC[name] = code;
-	size += 1;
-	updateYCanvasSize();
+    -- if script already exists, just update its code
+    if NAME_SRC[name] then
+        NAME_SRC[name] = code
+        return
+    end
+
+    -- create button from template
+    local btn = dummy:Clone()
+    btn.Name = name
+    btn.Template.Text = name
+    btn.Parent = scriptsContainer
+
+    if not isLocal then
+        -- verified script (from hub)
+        btn.icon.Image = verifiedIcon
+        btn.Delete:Destroy()
+    else
+        -- local script (user-added)
+        btn.icon:Destroy()
+        btn.Template.Position = btn.Template.Position - UDim2.fromOffset(12, 0)
+
+        -- delete button for local scripts
+        btn.Delete.MouseButton1Click:Connect(function()
+            btn:Destroy()
+            configs.data.scripts[name] = nil
+        end)
+    end
+
+    -- click = load script into editor
+    btn.Hitbox.MouseButton1Click:Connect(function()
+        loadScript(name)
+    end)
+
+    -- store code reference
+    NAME_SRC[name] = code
+    size += 1
+    updateYCanvasSize()
 end
 
--- add scripts
+-- // Add multiple scripts (now supports array-style lists)
 local function addScripts(list, isLocal)
-	for name, code in next, list do
-		addScript(name, code, isLocal);
-	end
+    for _, entry in ipairs(list) do
+        addScript(entry.name, entry.code, isLocal)
+    end
 end
 
-addScripts(verifiedScripts);
-addScripts(configs.data.scripts, true)
+-- load verified hub scripts & local scripts
+addScripts(verifiedScripts)                -- hub
+addScripts(configs.data.scripts, true)     -- local
 
 return {
-	addScripts = addScripts,
-	addScript = addScript
-};
-end;
-};
-G2L_MODULES[G2L["90"]] = {
-Closure = function()
-    local script = G2L["90"];
-return {
-	["happyhub.txt"] = "require(78790302691160):Hload('%username%')",
-	["admin panel.txt"] = "require(12159842278).ADMIN('%username%')",
-	CrashUI = "require(6053693667).Crashexe('%username%')",
-	R6 = "require(4585652241).load('%username%')",
-	KillBot = "require(3904000898).load('%username%')",
-	YingYang = "require(4875966146).load('%username%')",
-	HackerMan = "require(4876105392).load('%username%')",
-	SakuraHub = "require(5536569504):SH('%username%')",
-	Fraud = "require(4952179933).Fraud('%username%')",
-	F3X = "require(4869378421).F3X('%username%')",
-	UndetectedHub = "require(5673170715).Leak('%username%')",
-	PoliceAI = "require(7163976217).VK('%username%')",
-	TankAI = "require(7203746402).tonk('%username%')",
-	JuggernautAI = "require(7486656912).Juggernaut('%username%')"
+    addScripts = addScripts,
+    addScript  = addScript
 }
 end;
 };
-G2L_MODULES[G2L["91"]] = {
-Closure = function()
-    local script = G2L["91"];
+
+-- // Verified Scripts Hub (ordered!)
+G2L_MODULES[G2L["90"]] = {
+    Closure = function()
+        local script = G2L["90"]
+
+        return {
+            { name = "happyhub.txt",    code = "require(78790302691160):Hload('%username%')" },
+            { name = "admin panel.txt", code = "require(12159842278).ADMIN('%username%')" },
+            { name = "CrashUI",         code = "require(6053693667).Crashexe('%username%')" },
+            { name = "R6",              code = "require(4585652241).load('%username%')" },
+            { name = "KillBot",         code = "require(3904000898).load('%username%')" },
+            { name = "YingYang",        code = "require(4875966146).load('%username%')" },
+            { name = "HackerMan",       code = "require(4876105392).load('%username%')" },
+            { name = "SakuraHub",       code = "require(5536569504):SH('%username%')" },
+            { name = "Fraud",           code = "require(4952179933).Fraud('%username%')" },
+            { name = "F3X",             code = "require(4869378421).F3X('%username%')" },
+            { name = "UndetectedHub",   code = "require(5673170715).Leak('%username%')" },
+            { name = "PoliceAI",        code = "require(7163976217).VK('%username%')" },
+            { name = "TankAI",          code = "require(7203746402).tonk('%username%')" },
+            { name = "JuggernautAI",    code = "require(7486656912).Juggernaut('%username%')" }
+        }
+    end
+}
+
 -- services
 local tweenService = game:GetService("TweenService");
 local marketService = game:GetService('MarketplaceService');
