@@ -1,3 +1,11 @@
+--[=[
+ d888b  db    db d888888b      .d888b.      db      db    db  .d8b.  
+88' Y8b 88    88   `88'        VP  `8D      88      88    88 d8' `8b 
+88      88    88    88            odD'      88      88    88 88ooo88 
+88  ooo 88    88    88          .88'        88      88    88 88~~~88 
+88. ~8~ 88b  d88   .88.        j88.         88booo. 88b  d88 88   88 
+ Y888P  ~Y8888P' Y888888P      888888D      Y88888P ~Y8888P' YP   YP  CONVERTER
+]=]
 
 -- Instances: 149 | Scripts: 15 | Modules: 14
 local G2L = {};
@@ -5,7 +13,7 @@ local G2L = {};
 -- StarterGui.backdoor.exe v8
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["ResetOnSpawn"] = false;
-G2L["1"]["Name"] = [[Trollinator.exe v2]];
+G2L["1"]["Name"] = [[backdoor.exe v8]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
 -- StarterGui.backdoor.exe v8.Main
@@ -2775,7 +2783,7 @@ return {
 	title = script.Parent.Main.Topbar.VersionTitle,
 	btns = {
 		execBtn = execBtns.ExecuteBtn.Hitbox,
-        scanBtn = execBtns.ScanBtn.Hitbox
+		scanBtn = execBtns.ScanBtn.Hitbox
 	}
 }
 end;
@@ -2864,7 +2872,6 @@ G2L_MODULES[G2L["90"]] = {
 Closure = function()
     local script = G2L["90"];
 return {
-
 	Dex = "require(4786706026):dex('%username%')",
 	Minecraft = "require(5820669639)('%username%')",
 	CrashUI = "require(6053693667).Crashexe('%username%')",
@@ -2879,7 +2886,6 @@ return {
 	PoliceAI = "require(7163976217).VK('%username%')",
 	TankAI = "require(7203746402).tonk('%username%')",
 	JuggernautAI = "require(7486656912).Juggernaut('%username%')"
-
 }
 end;
 };
@@ -7449,7 +7455,7 @@ local script = G2L["83"];
 	local runService = game:GetService("RunService");
 	
 	-- consts
-	local minSize = Vector2.new(616, 248);
+	local minSize = Vector2.new(503, 248);
 	local maxSize = Vector2.new(720, 432);
 	
 	-- vars
