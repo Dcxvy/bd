@@ -10,8 +10,6 @@
 -- Instances: 149 | Scripts: 15 | Modules: 14
 local G2L = {};
 
-print("test")
-
 -- StarterGui.Trollinator.exe - v2.0.0
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["ResetOnSpawn"] = false;
