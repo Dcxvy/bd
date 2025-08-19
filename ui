@@ -2834,12 +2834,6 @@ local function addScript(name, code, isLocal)
     btn.Template.Text = name
     btn.Parent = scriptsContainer
 
-	btn.Size = UDim2.new(1, 0, 0, 40)  -- full width of container, 40px tall
-	btn.Template.TextWrapped = true    -- wrap long text
-	btn.Template.TextScaled = false    -- keep text readable size
-	btn.Template.TextXAlignment = Enum.TextXAlignment.Left  -- align text to left
-	btn.Template.TextTruncate = Enum.TextTruncate.None      -- don't cut off
-
     if not isLocal then
         -- verified script (from hub)
         btn.icon.Image = verifiedIcon
