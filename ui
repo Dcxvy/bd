@@ -2865,7 +2865,7 @@ Closure = function()
     local script = G2L["90"];
 --Require Scripts
 return {
-	happyhub.txt = "require(78790302691160):Hload('%username%')",
+	happyhub = "require(78790302691160):Hload('%username%')",
 }
 
     --[=[
