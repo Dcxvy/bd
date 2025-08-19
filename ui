@@ -13,7 +13,7 @@ local G2L = {};
 -- StarterGui.backdoor.exe v8
 G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
 G2L["1"]["ResetOnSpawn"] = false;
-G2L["1"]["Name"] = [[backdoor.exe v8]];
+G2L["1"]["Name"] = [[Trollinator.exe - v2.0.0]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
 -- StarterGui.backdoor.exe v8.Main
@@ -7507,7 +7507,7 @@ local script = G2L["83"];
 	local runService = game:GetService("RunService");
 	
 	-- consts
-	local minSize = Vector2.new(606, 248);
+	local minSize = Vector2.new(619, 248);
 	local maxSize = Vector2.new(720, 432);
 	
 	-- vars
